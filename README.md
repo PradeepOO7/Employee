@@ -7,7 +7,7 @@ Mysql
 
 # Steps to Test on your local Machine
 ## Step 1:- To clone this repo <br/>
-```git clone https://github.com/bossOO7/Employee.git```<br/>
+```git clone https://github.com/bossOO7/Employee.git``` or you can download the zip and Extract it.<br/>
 ## Step 2:- Move to Employee Folder <br/>
 '''cd Employee'''<br/>
 ## Step 3:- Downloads the dependencies <br/>
@@ -21,21 +21,21 @@ Start Your mysql server on port 3306 which is by default and create a database n
 Now you can test the api in postman 
 
 ## Api routes 
-## 1.To Add new Empolyee Details Method(POST)
+## 1.To Add new Empolyees:- Method(POST)
 http://localhost/api/v1/addemployee
 <br/>
 
-## 2.To get All the Employees Detail Method(GET)
+## 2.To get All the Employees:- Method(GET)
 http://localhost/api/v1/getall
 <br/>
 
-## 3.To get a single Employee Detail by id Method(GET)
+## 3.To get a single Employee by id:- Method(GET)
 http://localhost/api/v1/getbyid/:id
 <br/>
 
-## 4.To Update Existing Employee Details by id Only Number and Address are Updatable Method(PATCH)
+## 4.To Update Existing Employee by id Only Number and Address are Updatable:- Method(PATCH)
 http://localhost/api/v1/update/:id
 <br/>
 
-## 5.To Delete a Employee Details by id Method(DELETE)
+## 5.To Delete a Employee by id:- Method(DELETE)
 http://localhost/api/v1/delete/:id

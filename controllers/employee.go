@@ -84,14 +84,14 @@ func (repository *EmployeeRepo) UpdateEmployee(c *gin.Context) {
    }
    var employee models.UpdateEmp
    c.ShouldBindJSON(&employee)
-   err = models.UpdateEmployee(repository.Db, &employee,id)
+   err = models.UpdateEmployee(repository.Db, &employee,&emp,id)
    if err != nil {
       c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
       return
    }
    emp.Address=employee.Address
    emp.Mobile=employee.Mobile
-   c.JSON(http.StatusOK, emp)
+   c.JSON(http.StatusOK,gin.H{"message":"Updated Successfully","id":emp.Emp_ID})
 }
 
 // delete emp

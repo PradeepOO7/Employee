@@ -9,7 +9,7 @@ type Employee struct{
     Emp_ID uint `json:"empid" gorm:"primary_key";"auto_increment"`
     Name string `json:"name" binding:"required"`
     Address string `json:"address" binding:"required"`
-    Mobile int64  `json:"mobile_number" binding:"required"`
+    Mobile int64  `json:"mobile_number" binding:"required,len=10"`
     Department string  `json:"department" binding:"required"`
     Salary float64  `json:"salary" binding:"required"`
 }
@@ -45,11 +45,17 @@ func CreateEmployee(db *gorm.DB, emp *Employee) (err error) {
  }
  
  //update Employee
- func UpdateEmployee(db *gorm.DB, emp *UpdateEmp,id int) (err error) {
-    employee:=Employee{} 
-    db.Model(&employee).Where("emp_id=?",id).Updates(Employee{Address:emp.Address,Mobile:emp.Mobile})
-    return nil
- }
+ func UpdateEmployee(db *gorm.DB, emp *UpdateEmp,e *Employee,id int) (err error) {
+   employee:=Employee{} 
+   switch{
+   case emp.Address =="":
+     emp.Address=e.Address
+   case emp.Mobile==0:
+     emp.Mobile=e.Mobile
+   }
+   db.Model(&employee).Where("emp_id=?",id).Updates(Employee{Address:emp.Address,Mobile:emp.Mobile})
+   return nil
+}
  
  //delete Employee
  func DeleteEmployee(db *gorm.DB, emp *Employee, id int) (err error) {
